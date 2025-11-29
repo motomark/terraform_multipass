@@ -1,7 +1,7 @@
 # terraform_multipass
 Example Terraform and Ansible on multipass hypervisor
 
-Add the Mac’s public key to the VM
+## Add the Mac’s public key to the VM
 SSH into the multipass vm using your normal ~/.ssh/id_rsa :
 
 1. Run multipass shell <vm-name> to get a shell inside the VM.
@@ -20,3 +20,16 @@ Then you can SSH from your Mac without pointing to Multipass’s root-owned key.
 ```
 ssh ubuntu@<vm-host>
 ```
+
+## Use the Multipass SSH Key-Pair to access the VM
+
+This is going to bve useful when running Ansible.
+
+```
+sudo ssh -i "/var/root/Library/Application Support/multipassd/ssh-keys/id_rsa" ubuntu@<vm-host>
+```
+
+## References
+* [Terraform and Multipass](https://dev.to/todoroff/multipass-terraform-modern-vm-automation-guide-129l)
+* [Terraform and Ansible](https://spacelift.io/blog/using-terraform-and-ansible-together)
+
