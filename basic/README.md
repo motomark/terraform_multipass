@@ -1,4 +1,8 @@
-## Manually add the Mac’s public key to the VM.
+
+# A basic example
+See 'main.tf'
+## Notes
+Manually add the Mac’s public key to the VM.
 We don't need to do this if we use cloud-init.
 
 SSH into the multipass vm using your normal ~/.ssh/id_rsa :
