@@ -1,5 +1,5 @@
 # Using Terraform and Ansible with Multipass
-Create a VM in [Multipass](https://canonical.com/multipass) using Terraform then install Nginx with a Home page using ansible. This explains how to configure Ansible and ensure the VM has SSH configured with public key of the Ansible control node for passwordless access to the VM in Multipass.
+Create a VM in [Multipass](https://canonical.com/multipass) using Terraform then install Nginx with a Home page using ansible. This explains how to use 'cloud-init' to ensure the VM has the SSH key of the Ansible control node. Terraform will create the VM and the Ansible 'inventory.ini' file.
 
 ## Running terraform and ansible to create and configure the VM
 ```
@@ -14,11 +14,11 @@ $ ssh ubuntu@<VM_IP_ADDRESS>
 $ ansible-playbook -i inventory.ini playbook.yml
 ```
 
-## Configuration Notes
+## Notes
 
-### main.tf -  create an inventory file using a local_file resource
+### Create an inventory file using a local_file resource (main.tf)
 
-Terraform creates an ansible inventory ini file with the ip address of the new VM, configure python and point to the pre-generated SSH private key.
+Terraform creates an ansible inventory ini file with the ip address of the new VM, configures python and points to the pre-generated SSH private key.
 ```
 resource "local_file" "ansible_inventory" {
   filename = "${path.module}/inventory.ini"
@@ -28,7 +28,7 @@ ${multipass_instance.dev.ipv4[0]} ansible_user=ubuntu ansible_ssh_private_key_fi
 EOF
 }
 ``` 
-### main.tf -  Inject the cloud-init configuration
+### Inject the cloud-init configuration (main.tf)
 Terraform reference to the 'cloud-init' file we use to post-configure the VM. This configuration must transfer the SSH public key (authorized_keys) to the VM first.
 ```
 # Inject cloud-init
