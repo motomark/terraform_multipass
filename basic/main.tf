@@ -27,6 +27,19 @@ resource "multipass_instance" "dev" {
   networks {
     name = "en0"
   }
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.ipv4}"
+  }
+
+  connection {
+      type        = "ssh"
+      host        = self.ipv4
+      user        = "ubuntu"
+      private_key = file("~/.ssh/id_rsa")
+      timeout     = "4m"
+   }
+
 }
 
 resource "multipass_alias" "shell" {

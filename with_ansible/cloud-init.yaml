@@ -1,0 +1,7 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: sudo
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrhVKCehH7noSWvaM5AxssaRUr30d5QYgkJkm1/K3yI56iJeBuM5af8YSbxLGezFpERQqhQ4949p6Wce3grq8BOsFe02+kUhUuasam0g6lQK88LkbYcarOJmLWxer2bNx223dA5yR0C61M2u7XgRRgPLOo9+6LT2zo1kdjCREMttyPjOwJml/YmfNVgRvopxYMwA1jQk1q/JgFSAsP2sVII7K+ItvXjwPTLvkeMaq5z24nsiPcLL6aKlR+s/zFdYkDIcFhE9SBGSBkLPDryrxXzhFaKX4+vsmyCY1O+8uV7XGc9CaIUIKvN0YzCAH6mes+LCZ2a0o+9Eamr0v8KI29 SSH Key pair for GitLab
